@@ -55,7 +55,7 @@ int WinLine()
     int i, j, conf = 0;
     for(i=0; i<3; i++)
     {
-        for(j=0; j<3; j++)
+        for(j=0; j<2; j++)
         {
             if(!PlayValidate(i,j) && game[i][j] == game[i][j+1])
                 conf++;
@@ -72,7 +72,7 @@ int WinColumn()
     int i, j, conf = 0;
     for(i=0; i<3; i++)
     {
-        for(j=0; j<3; j++)
+        for(j=0; j<2; j++)
         {
             if(!PlayValidate(j,i) && game[j][i] == game[j+1][i])
                 conf++;
@@ -141,11 +141,14 @@ void Play()
     }
     while(order < 9 && win == 0);
     Print();
-    if(order%2 == 1)
-        printf("Congratulations, %s, you win!", player1);
-    else
-        printf("Congratulations, %s, you win!", player2);
-
+    if(win == 0)
+        printf("\nDeu velha!");
+    else{
+        if(order%2 == 1)
+            printf("Congratulations, %s, you win!", player1);
+        else
+            printf("Congratulations, %s, you win!", player2);
+    }
 }
 
 int main()
